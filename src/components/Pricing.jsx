@@ -39,7 +39,7 @@ const Pricing = () => {
       <div className="relative mx-auto max-w-5xl">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mt-3 text-2xl font-semibold text-slate-900 md:text-5xl">
-           Book us  to do the data management job at you at your doorstep.
+           Book us  to fix your data at your doorstep
           </h1>
         </div>
 

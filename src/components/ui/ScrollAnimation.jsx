@@ -342,7 +342,7 @@ function AnimationScroll() {
 
           <span
             ref={(el) => (textSegmentRefs.current[4] = el)}
-            className="inline-block"
+            className="inline-block text-[#9B5DE0]"
           >
             30Mbps
           </span>
