@@ -1149,7 +1149,7 @@ const canGoNext = () => {
           </aside>
         </div>
       </div>
-      <Pricing/>
+      {/* <Pricing/> */}
     </section>
   );
 }

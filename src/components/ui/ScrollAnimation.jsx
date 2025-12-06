@@ -16,8 +16,8 @@ function AnimationScroll() {
   const iconsContainerRef = useRef(null);
   const iconRefs = useRef([]);
   const textSegmentRefs = useRef([]);
-  // const iconPlaceholderRefs = useRef([]);
   const headlineRef = useRef(null);
+  const buttonRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -51,11 +51,10 @@ function AnimationScroll() {
     const ctx = gsap.context(() => {
       const icons = iconRefs.current.filter(Boolean);
       const textSegments = textSegmentRefs.current.filter(Boolean);
-      // const iconPlaceholders = iconPlaceholderRefs.current.filter(Boolean);
       const iconsContainer = iconsContainerRef.current;
       const header = headerRef.current;
       const hero = heroRef.current;
-      const headline = headlineRef.current;
+      const button = buttonRef.current;
 
       if (!hero || icons.length === 0) return;
 
@@ -65,20 +64,7 @@ function AnimationScroll() {
       const originalIconSize = isMobileView ? 80 : isTablet ? 100 : 120;
 
       gsap.set(textSegments, { opacity: 0, y: 20 });
-      // gsap.set(iconPlaceholders, { opacity: 0 });
-
-      // const clonedIcons = icons.map((icon) => {
-      //   const clone = icon.cloneNode(true);
-      //   clone.style.cssText = `
-      //     position: absolute;
-      //     width: ${finalIconSize}px;
-      //     height: ${finalIconSize}px;
-      //     opacity: 0;
-      //     pointer-events: none;
-      //   `;
-      //   headline.appendChild(clone);
-      //   return clone;
-      // });
+      gsap.set(button, { opacity: 0, scale: 0.9 });
 
       const scrollDistance = isMobileView
         ? "+=180%"
@@ -98,6 +84,7 @@ function AnimationScroll() {
         },
       });
 
+      // Header fade out
       tl.to(header, {
         y: isMobileView ? -30 : -80,
         opacity: 0,
@@ -105,6 +92,7 @@ function AnimationScroll() {
         ease: "power1.out",
       })
 
+        // Icons move up
         .to(
           icons,
           {
@@ -116,6 +104,19 @@ function AnimationScroll() {
           0
         )
 
+        // Button ONLY FADES IN at 60% (NO movement)
+        .to(
+          button,
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.05,
+            ease: "power2.out",
+          },
+          0.048 // 60% of icon animation (0.08 * 0.6 = 0.048)
+        )
+
+        // Icons container centers
         .to(iconsContainer, {
           x: () => {
             const rect = iconsContainer.getBoundingClientRect();
@@ -125,6 +126,7 @@ function AnimationScroll() {
           ease: "power1.out",
         })
 
+        // Icons scale down
         .to(
           icons,
           {
@@ -135,36 +137,26 @@ function AnimationScroll() {
           "<"
         )
 
+        // Icons fade out
         .to(icons, {
           opacity: 0,
           duration: 0.04,
           ease: "power1.in",
         })
 
-        .call(() => {
-          clonedIcons.forEach((clone, i) => {
-            if (!iconPlaceholders[i]) return;
+        // Button ONLY FADES OUT with icons (NO movement)
+        .to(
+          button,
+          {
+            opacity: 0,
+            scale: 0.9,
+            duration: 0.04,
+            ease: "power1.in",
+          },
+          "<" // Start at same time as icons fade
+        )
 
-            const ph = iconPlaceholders[i].getBoundingClientRect();
-            const hl = headline.getBoundingClientRect();
-
-            clone.style.left = `${
-              ph.left - hl.left + ph.width / 2 - finalIconSize / 2
-            }px`;
-            clone.style.top = `${
-              ph.top - hl.top + ph.height / 2 - finalIconSize / 2
-            }px`;
-          });
-        })
-
-        // .to(clonedIcons, {
-        //   opacity: 1,
-        //   scale: 1,
-        //   duration: 0.06,
-        //   ease: "power1.out",
-        //   stagger: isMobileView ? 0.005 : 0.008,
-        // })
-
+        // Text segments appear after icons/button disappear
         .to(
           textSegments,
           {
@@ -178,16 +170,7 @@ function AnimationScroll() {
             ease: "power1.out",
           },
           "-=0.03"
-        )
-
-        // .to(
-        //   iconPlaceholders,
-        //   {
-        //     opacity: 1,
-        //     duration: 0.02,
-        //   },
-        //   "<"
-        // );
+        );
     }, heroRef);
 
     return () => {
@@ -202,6 +185,16 @@ function AnimationScroll() {
     { src: icon3, alt: "Shield Icon" },
     { src: icon4, alt: "API Icon" },
   ];
+
+  const handleBookNow = () => {
+    // Option 1: Direct navigation
+    window.location.href = "/recover";
+
+    // Option 2: If using React Router:
+    // import { useNavigate } from 'react-router-dom';
+    // const navigate = useNavigate();
+    // navigate('/book-now');
+  };
 
   return (
     <div className="min-h-screen bg-[#FBFBFB]">
@@ -218,33 +211,21 @@ function AnimationScroll() {
           }}
         />
 
-<div
-  ref={headerRef}
-  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-             w-full max-w-[90%] sm:max-w-lg md:max-w-2xl lg:max-w-3xl 
-             text-center z-10 px-4"
->
-  <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight">
-    On-Demand Pickup
-  </h2>
+        <div
+          ref={headerRef}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                     w-full max-w-[90%] sm:max-w-lg md:max-w-2xl lg:max-w-3xl 
+                     text-center z-10 px-4"
+        >
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight">
+            Let us pick up Your Damaged Device
+          </h2>
 
-  <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-6 leading-snug">
-    Expert Technicians | Secure Digital Vault  | Fast Delivery
-  </p>
+          <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-6 leading-snug">
+            Expert Technicians | Secure Digital Vault | Fast Delivery
+          </p>
+        </div>
 
-  {/* <div className="flex justify-center gap-4 mt-4 flex-wrap">
-    <button className="px-6 py-3 bg-black text-white rounded-xl text-sm sm:text-base hover:bg-gray-800 transition">
-      Schedule Pickup
-    </button>
-
-    <button className="px-6 py-3 bg-white text-black border border-gray-300 rounded-xl text-sm sm:text-base hover:bg-gray-100 transition">
-      Explore Services
-    </button>
-  </div> */}
-</div>
-
-
-        {/* Floating Icons */}
         <div
           ref={iconsContainerRef}
           className="absolute bottom-8 sm:bottom-10 md:bottom-14 left-0 right-0 flex items-center justify-center gap-4 sm:gap-5 md:gap-6 lg:gap-8 xl:gap-10 z-20 px-4"
@@ -267,6 +248,56 @@ function AnimationScroll() {
           ))}
         </div>
 
+      <button
+  ref={buttonRef}
+  onClick={handleBookNow}
+  className="
+    absolute z-30 opacity-0
+    top-1/2
+    -translate-x-1/2 -translate-y-1/2
+    mt-30
+    py-2 px-2 sm:px-2 sm:py-1 
+    rounded-xl
+    text-sm sm:text-base md:text-lg
+    font-semibold
+    shadow-2xl
+    cursor-pointer
+    transition-all
+    group inline-flex items-center justify-center overflow-hidden
+  "
+  style={{
+    background: "#222222",
+    boxShadow: "0px 6px 24px 0px rgba(0, 0, 0, 0.3)",
+  }}
+>
+  {/* sliding background on hover */}
+  <span
+    className="
+      absolute right-0 h-full w-0 bg-[#9B5DE0]
+      transition-all duration-[400ms] ease-in-out
+      group-hover:left-0 group-hover:right-auto group-hover:w-full
+    "
+  />
+
+  {/* label */}
+  <span
+    className="
+      relative z-20 text-center
+      text-white
+       font-bold text-xl
+      py-3 px-8 sm:py-4 sm:px-10
+      tracking-[0.18em]
+      whitespace-nowrap
+      transition-all duration-300 ease-in-out
+      group-hover:text-[#222222] group-hover:animate-scaleUp
+    "
+  >
+    BOOK NOW
+  </span>
+</button>
+
+
+      
         <div
           ref={headlineRef}
           className="
@@ -281,46 +312,40 @@ function AnimationScroll() {
             px-2 sm:px-4
           "
         >
-        <span ref={(el) => (textSegmentRefs.current[0] = el)} className="inline-block">
-  Compress&nbsp;
-</span>
+          <span
+            ref={(el) => (textSegmentRefs.current[0] = el)}
+            className="inline-block"
+          >
+            Compress&nbsp;
+          </span>
 
-          {/* <span
-            ref={(el) => (iconPlaceholderRefs.current[0] = el)}
-            className="inline-block align-middle mx-0 w-[110px] h-[110px] sm:w-[120px] sm:h-[120px] md:w-[150px] md:h-[150px] lg:w-[170px] lg:h-[170px]"
-          /> */}
+          <span
+            ref={(el) => (textSegmentRefs.current[1] = el)}
+            className="inline-block"
+          >
+            files&nbsp;with&nbsp;
+          </span>
 
-      <span ref={(el) => (textSegmentRefs.current[1] = el)} className="inline-block">
-  files&nbsp;with&nbsp;
-</span>
+          <span
+            ref={(el) => (textSegmentRefs.current[2] = el)}
+            className="inline-block"
+          >
+            zero&nbsp;quality&nbsp;
+          </span>
 
-          {/* <span
-            ref={(el) => (iconPlaceholderRefs.current[1] = el)}
-            className="inline-block align-middle mx-0 w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px]"
-          /> */}
+          <span
+            ref={(el) => (textSegmentRefs.current[3] = el)}
+            className="inline-block"
+          >
+            loss&nbsp;on&nbsp;
+          </span>
 
-        <span ref={(el) => (textSegmentRefs.current[2] = el)} className="inline-block">
-  zero&nbsp;quality&nbsp;
-</span>
-
-          {/* <span
-            ref={(el) => (iconPlaceholderRefs.current[2] = el)}
-            className="inline-block align-middle mx-0 w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px]"
-          /> */}
-
-         
-<span ref={(el) => (textSegmentRefs.current[3] = el)} className="inline-block">
-  loss&nbsp;on&nbsp;
-</span>
-
-          {/* <span
-            ref={(el) => (iconPlaceholderRefs.current[3] = el)}
-            className="inline-block align-middle mx-0 w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px]"
-          /> */}
-
-      <span ref={(el) => (textSegmentRefs.current[4] = el)} className="inline-block">
-  30Mbps
-</span>
+          <span
+            ref={(el) => (textSegmentRefs.current[4] = el)}
+            className="inline-block"
+          >
+            30Mbps
+          </span>
         </div>
       </section>
     </div>

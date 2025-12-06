@@ -1,27 +1,27 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const Pricing = () => {
+const RecoverPrice = () => {
   const plans = [
     {
       name: "Individual",
-      perWorkPrice: 99, // undamaged
-      damagedPrice: 399 // damaged
+      perWorkPrice: 99,
+      damagedPrice: 399
     },
     {
       name: "Enterprise",
-      perWorkPrice: 99 // baseline for post-visit work
+      perWorkPrice: 99
     },
     {
       name: "Business",
-      perWorkPrice: 49 // baseline for post-visit work
+      perWorkPrice: 49
     }
   ];
 
   return (
     <section
       id="pricing"
-      className="relative w-full px-4 py-16 md:py-20 overflow-hidden"
+      className="relative w-full min-h-screen px-4 py-20 sm:py-16 md:py-20 overflow-hidden"
       style={{
         background:
           "linear-gradient(135deg, #E8F9FF 0%, #E8F9FF 30%, #E8F9FF 65%, #FBFBFB 100%)"
@@ -36,17 +36,14 @@ const Pricing = () => {
         }}
       />
 
-      <div className="relative mx-auto max-w-5xl">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="mt-3 text-2xl font-semibold text-slate-900 md:text-5xl">
-           Book us  to do the data management job at you at your doorstep.
+      <div className="relative mx-auto px-2 mt-15">
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="mt-3 text-2xl font-semibold text-slate-900 sm:text-3xl md:text-5xl leading-tight">
+            Recover your data in just few steps
           </h1>
         </div>
 
-        <div className="mt-8 flex justify-center">
-        </div>
-
-        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
           {plans.map((plan) => {
             const isEnterprise = plan.name === "Enterprise";
             const isIndividual = plan.name === "Individual";
@@ -60,9 +57,9 @@ const Pricing = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 whileHover={{ y: -4, scale: 1.01 }}
                 className={[
-                  "flex h-full flex-col rounded-2xl border bg-white/95 py-8 shadow-sm px-6 md:px-7 backdrop-blur-sm",
+                  "flex flex-col rounded-2xl border bg-white/95 py-8 px-5 sm:px-6 shadow-sm backdrop-blur-sm h-full",
                   isEnterprise
-                    ? "border- shadow-[0_18px_40px_rgba(15,23,42,0.18)] relative overflow-hidden"
+                    ? "border-slate-900 shadow-[0_18px_40px_rgba(15,23,42,0.18)] relative overflow-hidden"
                     : "border-slate-200"
                 ].join(" ")}
               >
@@ -72,13 +69,11 @@ const Pricing = () => {
                   </span>
                 )}
 
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-lg font-semibold text-slate-900">
-                    {plan.name}
-                  </h3>
-                </div>
+                <h3 className="text-lg font-semibold text-slate-900 text-center">
+                  {plan.name}
+                </h3>
 
-                <div className="mt-5 flex h-16 items-center justify-center overflow-hidden">
+                <div className="mt-5 flex h-16 items-center justify-center">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key="perWork"
@@ -89,14 +84,9 @@ const Pricing = () => {
                       className="flex items-end gap-1"
                     >
                       {!isIndividual ? (
-                        <>
-                          <span className="text-4xl font-bold text-slate-900">
-                            Free
-                          </span>
-                          <span className="mb-1 text-xs text-slate-500">
-                         
-                          </span>
-                        </>
+                        <span className="text-4xl font-bold text-slate-900">
+                          Free
+                        </span>
                       ) : (
                         <>
                           <span className="text-2xl font-semibold text-slate-900">
@@ -105,14 +95,12 @@ const Pricing = () => {
                           <span className="text-4xl font-bold text-slate-900">
                             {plan.perWorkPrice}
                           </span>
-                          <span className="mb-1 text-xs text-slate-500">
-                           
-                          </span>
                         </>
                       )}
                     </motion.div>
                   </AnimatePresence>
                 </div>
+
                <a
   href={`/book-now?plan=${plan.name}`}
   className={[
@@ -124,9 +112,6 @@ const Pricing = () => {
 >
   Book Now
 </a>
-
-              
-
               </motion.div>
             );
           })}
@@ -136,4 +121,4 @@ const Pricing = () => {
   );
 };
 
-export default Pricing;
+export default RecoverPrice;

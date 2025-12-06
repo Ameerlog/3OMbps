@@ -15,8 +15,8 @@ const Footer = () => {
       href: "https://www.instagram.com/30mbps.co/?igsh=MW1mdGJscTlhanlneA%3D%3D#",
       label: "Instagram",
     },
-    { icon: Mail, href: "mailto:hello@30mbps.com", label: "Mail" },
-    { icon: Twitter, href: "https://x.com/30mbps", label: "X" },
+    { icon: Mail, href: "join@30mbps.com", label: "Mail" },
+    // { icon: , href: "https://x.com/30mbps", label: "X" },
   ];
 
   useEffect(() => {
@@ -100,7 +100,7 @@ const Footer = () => {
           <div className="grid gap-10 pb-12 text-left md:grid-cols-2 lg:grid-cols-4">
             
             {/* Address */}
-            <div>
+            {/* <div>
               <h3 className="font-semibold text-blue-900 mb-5 text-xl tracking-wide">
                 Address
               </h3>
@@ -113,7 +113,7 @@ const Footer = () => {
                   Karnataka, India
                 </p>
               </div>
-            </div>
+            </div> */}
 
             {/* Quick Links */}
             <div>

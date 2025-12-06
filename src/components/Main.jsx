@@ -170,10 +170,10 @@ import { ArrowRight } from "lucide-react";
 
 const floatingIcons = [
   { src: icon1, position: "top-50 right-[12%]", delay: 0, duration: 6 },
-  { src: icon2, position: "top-[45%] right-[35%]", delay: 1, duration: 7 },
+  { src: icon2, position: "top-[30%] right-[15%]", delay: 1, duration: 7 },
   { src: icon3, position: "top-[15%] left-[8%]", delay: 2, duration: 8 },
   { src: icon4, position: "bottom-[50%] left-[25%]", delay: 0.7, duration: 7 },
-  { src: icon5, position: "bottom-[33%] left-[28%]", delay: 1.2, duration: 7.5 },
+  { src: icon5, position: "bottom-[48%] left-[10%]", delay: 1.2, duration: 7.5 },
   { src: icon6, position: "bottom-[38%] right-[20%]", delay: 2.2, duration: 8 },
 ];
 
@@ -239,7 +239,7 @@ const Main = () => {
 
         <div className="mt-4 sm:mt-6 flex justify-center px-4">
           <motion.a
-            href="/book-now"
+            href="/recover"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -269,15 +269,20 @@ const Main = () => {
           
           <div className="space-y-2 sm:space-y-2">
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-2">
-              <span className="text-[#22222] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ">₹01 → </span>
-              <span className="text-[#9B5DE0] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">30Mb</span>
-              <span className="text-[#222222] text-sm sm:text-base md:text-lg font-semibold">(Undamaged)</span>
+              <span className="text-[#9B5DE0] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ">  ₹01 → </span>
+              <span className="text-[#222222] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">30Mb</span>
+              <span className="text-[#9B5DE0] text-sm sm:text-base md:text-lg font-semibold">(Undamaged)</span>
             </div>
-            
-            <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-5">
+             
+            {/* <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-5">
               <span className="text-[#9B5DE0] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">₹30→</span>
               <span className="text-[#222222] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">01Mb</span>
               <span className="text-[#9B5DE0] text-sm sm:text-base md:text-lg font-semibold">(Damaged)</span>
+            </div> */}
+             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-2">
+              <span className="text-[#22222] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ">₹30 → </span>
+              <span className="text-[#9B5DE0] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold"> 01Mb</span>
+              <span className="text-[#222222] text-sm sm:text-base md:text-lg font-semibold">(Damaged)</span>
             </div>
           </div>
         </motion.div>

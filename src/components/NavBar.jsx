@@ -69,7 +69,7 @@ const Navigation = () => {
 
           <div className="flex items-center gap-3">
             <Link
-              to="/book-now"
+              to="/"
               className="group relative px-5 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-xl text-sm font-semibold transition-all shadow-md hover:shadow-lg overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -95,7 +95,7 @@ const Navigation = () => {
 
             <div className="flex items-center gap-2">
               <Link
-                to="/book-now"
+                to="/"
                 className="px-4 py-1.5 bg-gray-900 text-white rounded-lg text-xs font-semibold shadow-sm"
               >
                 Join
