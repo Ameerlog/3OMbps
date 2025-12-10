@@ -19,6 +19,7 @@ import Pricing from './components/Pricing'
 import Main from './components/Main'
 import Explore from './pages/Explore'
 import RecoverPrice from './pages/RecoverPrice'
+import BookServices from './pages/BookServices'
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Route path="/learn-more" element={<LearnMore />} />
         <Route path="/book-now" element={<BookNowPage />} />
         <Route path="/explore" element={<Explore />} />
+        <Route path='book-services' element={<BookServices/>}/>
         <Route path="/recover" element={<RecoverPrice/>} />
       </Routes>
     </Router>

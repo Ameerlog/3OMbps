@@ -183,7 +183,7 @@ const HowItWorks = () => {
             whileHover={{ y: -6 }}
             className="relative bg-white rounded-3xl p-8 border border-gray-200 hover:border-gray-300 hover:shadow-xl transition-all duration-500 overflow-hidden min-h-[400px] flex flex-col"
           >
-            {/* Animated Titles */}
+            
             <div className="relative h-24 mb-8 overflow-hidden">
               <AnimatePresence mode="wait">
                 {hoveredCard !== "collaborate" ? (

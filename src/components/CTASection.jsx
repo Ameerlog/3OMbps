@@ -13,7 +13,7 @@ const CTASection = () => {
         </p>
 
         <button className="px-6 sm:px-8 py-2.5 sm:py-3 bg-black hover:bg-gray-800 text-white rounded-full text-sm sm:text-base transition-colors">
-          Try it now
+         <a href="/book-now">Try it now</a> 
         </button>
       </div>
     </section>

@@ -154,6 +154,9 @@
 // export default Main;
 
 
+
+
+
 import React from "react";
 import { motion } from "framer-motion";
 import Left from "../assets/imgaes/techie10.png";
@@ -228,11 +231,15 @@ const Main = () => {
             Introducing 30Mbps
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
           </span>
+          <h1 className="mt-3 sm:mt-4 text-4xl sm:text-4xl md:text-3xl lg:text-4xl font-medium text-slate-900 tracking-tight leading-tight px-2">
+           Technology at your doorstep at the speed of <span className="text-[#9B5DE0]">30Mbp Per Second</span>
+            
+          </h1>
 
           <h1 className="mt-3 sm:mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-slate-900 tracking-tight leading-tight px-2">
-            Since, data recovery is very simple,{" "}
+           Since, data recovery is very simple,{" "}
             <span className="bg-gradient-to-r from-[#9B5DE0] to-[#9B5DE0] bg-clip-text text-transparent flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-2">
-             let us do it for you.
+        let us do it for you.
             </span>
           </h1>
         </header>

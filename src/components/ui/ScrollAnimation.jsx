@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, useEffect } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -16,18 +16,7 @@ function AnimationScroll() {
   const iconsContainerRef = useRef(null);
   const iconRefs = useRef([]);
   const textSegmentRefs = useRef([]);
-  const headlineRef = useRef(null);
   const buttonRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   useLayoutEffect(() => {
     const lenis = new Lenis({
@@ -84,15 +73,12 @@ function AnimationScroll() {
         },
       });
 
-      // Header fade out
       tl.to(header, {
         y: isMobileView ? -30 : -80,
         opacity: 0,
         duration: 0.05,
         ease: "power1.out",
       })
-
-        // Icons move up
         .to(
           icons,
           {
@@ -103,8 +89,6 @@ function AnimationScroll() {
           },
           0
         )
-
-        // Button ONLY FADES IN at 60% (NO movement)
         .to(
           button,
           {
@@ -113,10 +97,8 @@ function AnimationScroll() {
             duration: 0.05,
             ease: "power2.out",
           },
-          0.048 // 60% of icon animation (0.08 * 0.6 = 0.048)
+          0.048
         )
-
-        // Icons container centers
         .to(iconsContainer, {
           x: () => {
             const rect = iconsContainer.getBoundingClientRect();
@@ -125,8 +107,6 @@ function AnimationScroll() {
           duration: 0.08,
           ease: "power1.out",
         })
-
-        // Icons scale down
         .to(
           icons,
           {
@@ -136,15 +116,11 @@ function AnimationScroll() {
           },
           "<"
         )
-
-        // Icons fade out
         .to(icons, {
           opacity: 0,
           duration: 0.04,
           ease: "power1.in",
         })
-
-        // Button ONLY FADES OUT with icons (NO movement)
         .to(
           button,
           {
@@ -153,10 +129,8 @@ function AnimationScroll() {
             duration: 0.04,
             ease: "power1.in",
           },
-          "<" // Start at same time as icons fade
+          "<"
         )
-
-        // Text segments appear after icons/button disappear
         .to(
           textSegments,
           {
@@ -187,13 +161,7 @@ function AnimationScroll() {
   ];
 
   const handleBookNow = () => {
-    // Option 1: Direct navigation
     window.location.href = "/recover";
-
-    // Option 2: If using React Router:
-    // import { useNavigate } from 'react-router-dom';
-    // const navigate = useNavigate();
-    // navigate('/book-now');
   };
 
   return (
@@ -248,58 +216,53 @@ function AnimationScroll() {
           ))}
         </div>
 
-      <button
-  ref={buttonRef}
-  onClick={handleBookNow}
-  className="
-    absolute z-30 opacity-0
-    top-1/2
-    -translate-x-1/2 -translate-y-1/2
-    mt-30
-    py-2 px-2 sm:px-2 sm:py-1 
-    rounded-xl
-    text-sm sm:text-base md:text-lg
-    font-semibold
-    shadow-2xl
-    cursor-pointer
-    transition-all
-    group inline-flex items-center justify-center overflow-hidden
-  "
-  style={{
-    background: "#222222",
-    boxShadow: "0px 6px 24px 0px rgba(0, 0, 0, 0.3)",
-  }}
->
-  {/* sliding background on hover */}
-  <span
-    className="
-      absolute right-0 h-full w-0 bg-[#9B5DE0]
-      transition-all duration-[400ms] ease-in-out
-      group-hover:left-0 group-hover:right-auto group-hover:w-full
-    "
-  />
+        <button
+          ref={buttonRef}
+          onClick={handleBookNow}
+          className="
+            absolute z-30 opacity-0
+            top-1/2
+            -translate-x-1/2 -translate-y-1/2
+            mt-30
+            py-2 px-2 sm:px-2 sm:py-1 
+            rounded-xl
+            text-sm sm:text-base md:text-lg
+            font-semibold
+            shadow-2xl
+            cursor-pointer
+            transition-all
+            group inline-flex items-center justify-center overflow-hidden
+          "
+          style={{
+            background: "#222222",
+            boxShadow: "0px 6px 24px 0px rgba(0, 0, 0, 0.3)",
+          }}
+        >
+          <span
+            className="
+              absolute right-0 h-full w-0 bg-[#9B5DE0]
+              transition-all duration-[400ms] ease-in-out
+              group-hover:left-0 group-hover:right-auto group-hover:w-full
+            "
+          />
 
-  {/* label */}
-  <span
-    className="
-      relative z-20 text-center
-      text-white
-       font-bold text-xl
-      py-3 px-8 sm:py-4 sm:px-10
-      tracking-[0.18em]
-      whitespace-nowrap
-      transition-all duration-300 ease-in-out
-      group-hover:text-[#222222] group-hover:animate-scaleUp
-    "
-  >
-    BOOK NOW
-  </span>
-</button>
+          <span
+            className="
+              relative z-20 text-center
+              text-white
+              font-bold text-xl
+              py-3 px-8 sm:py-4 sm:px-10
+              tracking-[0.18em]
+              whitespace-nowrap
+              transition-all duration-300 ease-in-out
+              group-hover:text-[#222222] group-hover:animate-scaleUp
+            "
+          >
+            BOOK NOW
+          </span>
+        </button>
 
-
-      
         <div
-          ref={headlineRef}
           className="
             relative text-lg 
             sm:text-2xl 

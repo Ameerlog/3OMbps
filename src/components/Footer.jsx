@@ -15,8 +15,8 @@ const Footer = () => {
       href: "https://www.instagram.com/30mbps.co/?igsh=MW1mdGJscTlhanlneA%3D%3D#",
       label: "Instagram",
     },
-    { icon: Mail, href: "join@30mbps.com", label: "Mail" },
-    // { icon: , href: "https://x.com/30mbps", label: "X" },
+    { icon: Mail, href: "mailto:join@30mbps.com", label: "Mail" },
+    { icon: Twitter, href: "https://x.com/30mbps", label: "X" },
   ];
 
   useEffect(() => {
@@ -96,75 +96,64 @@ const Footer = () => {
 
           <div className="w-full border-t border-gray-300 my-8" />
 
-          {/* GRID SECTION */}
-          <div className="grid gap-10 pb-12 text-left md:grid-cols-2 lg:grid-cols-4">
-            
-            {/* Address */}
-            {/* <div>
-              <h3 className="font-semibold text-blue-900 mb-5 text-xl tracking-wide">
-                Address
-              </h3>
+<div className="w-full flex justify-center">
+  <div className="grid gap-10 pb-12 text-left 
+    sm:grid-cols-2 
+    lg:grid-cols-3 
+    xl:grid-cols-3 
+    max-w-4xl">
 
-              <div className="flex items-start gap-4">
-                <MapPin className="w-6 h-6 text-blue-900 mt-1" />
-                <p className="text-gray-600 text-base font-medium leading-relaxed">
-                  Marvel Artiza, 3rd Floor <br />
-                  Vidyanagar, Hubli – 580021 <br />
-                  Karnataka, India
-                </p>
-              </div>
-            </div> */}
+ 
+    <div>
+      <h3 className="font-semibold text-blue-900 mb-4 text-xl">Quick Links</h3>
+      <ul className="space-y-2 text-gray-600 text-base font-medium">
+        <li><a href="#home" className="hover:text-blue-900">Home</a></li>
+        <li><a href="#services" className="hover:text-blue-900">Services</a></li>
+        <li><a href="#contact" className="hover:text-blue-900">Contact Us</a></li>
+      </ul>
+    </div>
 
-            {/* Quick Links */}
-            <div>
-              <h3 className="font-semibold text-blue-900 mb-4 text-xl">Quick Links</h3>
-              <ul className="space-y-2 text-gray-600 text-base font-medium">
-                <li><a href="#home" className="hover:text-blue-900">Home</a></li>
-                <li><a href="#services" className="hover:text-blue-900">Services</a></li>
-                <li><a href="#contact" className="hover:text-blue-900">Contact Us</a></li>
-              </ul>
-            </div>
 
-            {/* Support */}
-            <div>
-              <h3 className="font-semibold text-blue-900 mb-4 text-xl">Support</h3>
-              <ul className="space-y-2 text-gray-600 text-base font-medium">
-                <li><a href="#support" className="hover:text-blue-900">Customer Support</a></li>
-                <li><a href="#faq" className="hover:text-blue-900">FAQ</a></li>
-              </ul>
-            </div>
+    <div>
+      <h3 className="font-semibold text-blue-900 mb-4 text-xl">Support</h3>
+      <ul className="space-y-2 text-gray-600 text-base font-medium">
+        <li><a href="#support" className="hover:text-blue-900">Customer Support</a></li>
+        <li><a href="#faq" className="hover:text-blue-900">FAQ</a></li>
+      </ul>
+    </div>
 
-        
-            <div>
-              <h3 className="font-semibold text-blue-900 mb-4 text-xl">Contact Us</h3>
+    <div>
+      <h3 className="font-semibold text-blue-900 mb-4 text-xl">Contact Us</h3>
 
-              <div className="flex items-center gap-3 mb-4">
-                {socialLinks.map((item, index) => (
-                  <a
-                    key={index}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-md bg-white shadow flex items-center justify-center text-gray-600 hover:bg-blue-900 hover:text-white transition"
-                  >
-                    <item.icon className="w-4 h-4" />
-                  </a>
-                ))}
-              </div>
+      <div className="flex items-center gap-3 mb-4">
+        {socialLinks.map((item, index) => (
+          <a
+            key={index}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-9 h-9 rounded-md bg-white shadow flex items-center justify-center text-gray-600 hover:bg-blue-900 hover:text-white transition"
+          >
+            <item.icon className="w-4 h-4" />
+          </a>
+        ))}
+      </div>
 
-              <p className="text-gray-600 text-base font-medium leading-relaxed">
-                Email:{" "}
-                <a href="mailto:aultum.com@gmail.com" className="text-blue-900 hover:underline">
-                join@30mbps.com
-                </a>
-                <br />
-                Phone:{" "}
-                <a href="tel:+918080758575" className="hover:text-blue-900">+91 8088117744</a>
-              </p>
-            </div>
-          </div>
+      <p className="text-gray-600 text-base font-medium leading-relaxed">
+        Email:{" "}
+        <a href="mailto:join@30mbps.com" className="text-blue-900 hover:underline">
+          join@30mbps.com
+        </a>
+        <br />
+        Phone:{" "}
+        <a href="tel:+918088117744" className="hover:text-blue-900">+91 8088117744</a>
+      </p>
+    </div>
 
-          {/* Bottom Strip */}
+  </div>
+</div>
+
+
           <div className="text-center py-4 text-gray-600 text-sm border-t border-gray-300">
             © {new Date().getFullYear()} 30MBPS. All Rights Reserved.
             <br />
