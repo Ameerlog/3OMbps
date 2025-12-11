@@ -57,7 +57,7 @@ function App() {
         <Route path="/learn-more" element={<LearnMore />} />
         <Route path="/book-now" element={<BookNowPage />} />
         <Route path="/explore" element={<Explore />} />
-        <Route path='book-services' element={<BookServices/>}/>
+        <Route path='/book-services' element={<BookServices/>}/>
         <Route path="/recover" element={<RecoverPrice/>} />
       </Routes>
     </Router>
