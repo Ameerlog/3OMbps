@@ -1063,9 +1063,9 @@ function Contact() {
                     {deviceLabel}
                   </p>
                 </div>
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-700 px-3 py-1 text-[11px] font-medium border border-emerald-100">
+                {/* <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-700 px-3 py-1 text-[11px] font-medium border border-emerald-100">
                   Priority case review
-                </span>
+                </span> */}
               </div>
 
               <div className="grid grid-cols-2 gap-4 text-sm md:text-base">
