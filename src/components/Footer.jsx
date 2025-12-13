@@ -192,7 +192,7 @@ const Footer = () => {
       label: "Instagram",
     },
     { icon: Mail, href: "mailto:join@30mbps.com", label: "Mail" },
-    { icon: Twitter, href: "https://x.com/30mbps", label: "X" },
+    { icon: Twitter, href: "https://x.com/30mbps_com", label: "X" },
   ];
 
   useEffect(() => {
