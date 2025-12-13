@@ -457,18 +457,22 @@ const Main = () => {
             
           
         <header className="w-full text-center px-4 mb-8 sm:mb-10 md:mb-16">
-          <span className="inline-flex items-center mt-5 gap-2 rounded-full bg-slate-900 text-slate-50 px-3 py-1 text-[10px] sm:text-[11px] font-medium tracking-[0.18em]">
+          {/* <span className="inline-flex items-center mt-10 gap-2 rounded-full bg-slate-900 text-slate-50 px-3 py-1 text-[10px] sm:text-[11px] font-medium tracking-[0.18em]">
+            Introducing 30Mbps
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          </span> */}
+            <h1 className="mt-6
+            sm:mt-4 text-3xl sm:text-xl md:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight px-2">
+             Technology at your doorstep at the speed  of   <span className="text-[#9B5DE0] font-bold">30Mb Per Second</span>
+
+          </h1>
+   <span className="inline-flex items-center  gap-1 rounded-full bg-slate-900 text-slate-50 px-4 py-1 text-[10px] sm:text-[11px] font-medium tracking-[0.18em]  mt-3 bottom-10">
             Introducing 30Mbps
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
           </span>
-            <h1 className="mt-3 sm:mt-4 text-4xl sm:text-4xl md:text-3xl lg:text-4xl font-medium text-slate-900 tracking-tight leading-tight px-2">
-             Technology at your doorstep at the speed  of   <span className="text-[#9B5DE0] font-medium">30Mb Per Second</span>
-
-          </h1>
-
-          <h1 className="mt-3 sm:mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-slate-900 tracking-tight leading-tight px-2">
+          <h1 className="mt-1 sm:mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-slate-900 tracking-tight leading-tight px-2">
            Since, data recovery is very simple,{" "}
-            <span className="bg-gradient-to-r from-[#9B5DE0] to-[#9B5DE0] bg-clip-text text-transparent flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-2">
+            <span className="bg-gradient-to-r from-[#9B5DE0] to-[#9B5DE0] bg-clip-text text-transparent flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-1">
         let us do it for you.
             </span>
           </h1>
