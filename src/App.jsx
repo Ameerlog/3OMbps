@@ -20,6 +20,7 @@ import Main from './components/Main'
 import Explore from './pages/Explore'
 import RecoverPrice from './pages/RecoverPrice'
 import BookServices from './pages/BookServices'
+import Services from './components/Services'
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
             <>
          <Main/>
          <Pricing/>
-             
+             <Services/>
               {/* <Hero /> */}
               
               <Section />
